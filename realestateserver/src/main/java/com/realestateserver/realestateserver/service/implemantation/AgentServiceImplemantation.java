@@ -1,0 +1,40 @@
+package com.realestateserver.realestateserver.service.implemantation;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+
+import com.realestateserver.realestateserver.dto.AgentDto;
+import com.realestateserver.realestateserver.entity.Agent;
+import com.realestateserver.realestateserver.exception.ResourceNotFoundException;
+import com.realestateserver.realestateserver.repository.AgentRepository;
+import com.realestateserver.realestateserver.service.AgentService;
+import com.realestateserver.realestateserver.mapper.AgentMapper;
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class AgentServiceImplemantation implements AgentService {
+
+    private AgentRepository agentRepo;
+    @Override
+    public AgentDto createAgent(AgentDto agentDto) {
+        Agent agent = AgentMapper.mapToAgent(agentDto);
+        Agent saveAdagent = agentRepo.save(agent);
+        return AgentMapper.mapToAgentDto(saveAdagent);
+    }
+    @Override
+    public AgentDto getAgentById(Long agentId) {
+        Agent agent = agentRepo.findById(agentId)
+            .orElseThrow(() -> new ResourceNotFoundException("Agent not found with id: " + agentId));
+        return AgentMapper.mapToAgentDto(agent);
+       }
+    @Override
+    public List<AgentDto> getAllAgents() {
+        List<Agent> agents = agentRepo.findAll();
+        return agents.stream().map((agent) -> AgentMapper.mapToAgentDto(agent))
+            .collect(Collectors.toList());
+    }
+
+}
