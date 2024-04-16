@@ -24,8 +24,6 @@ public class Agent {
     @Column(name = "id_number")
     private Long idNum;
 
-    
-
     @Column(name = "email", nullable = false)
     private String email;
 
