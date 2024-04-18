@@ -37,6 +37,4 @@ public class Address {
     @Column(name = "country", nullable = false)
     private String country;
 
-    @OneToOne(mappedBy = "address")
-    private Property property;
 }

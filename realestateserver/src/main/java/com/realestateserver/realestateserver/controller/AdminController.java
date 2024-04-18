@@ -46,7 +46,7 @@ public class AdminController {
         return ResponseEntity.ok(admins);
     }
 
-    //Update employee Rest api
+    //Update admin Rest api
     @PutMapping("{id}")
     public ResponseEntity<AdminDto> updateAdmin(@PathVariable("id") Long adminId,@RequestBody  AdminDto updatedAdmin){
         AdminDto adminDto = adminService.updateAdmin(adminId, updatedAdmin);

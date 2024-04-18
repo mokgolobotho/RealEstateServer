@@ -47,7 +47,7 @@ public class AgentController {
         return ResponseEntity.ok(agents);
     }
 
-    //Update employee Rest api
+    //Update property Rest api
     @PutMapping("{id}")
     public ResponseEntity<AgentDto> updateAgent(@PathVariable("id") Long agentId,@RequestBody  AgentDto updatedAgent){
         AgentDto agentDto = agentService.updateAgent(agentId, updatedAgent);

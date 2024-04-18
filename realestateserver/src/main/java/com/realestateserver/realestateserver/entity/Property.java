@@ -5,10 +5,11 @@ import java.util.List;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Getter
-@Setter
+
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name ="Properties")
 public class Property {
@@ -19,12 +20,16 @@ public class Property {
     private Long propertyId;
 
     @Column(name = "property_name", nullable = false)
-    private String propetyName;
+    private String propertyName;
+
     @Column(name = "property_type", nullable = false)
-    private String propetyType;
+    private String propertyType;
 
     @Column(name = "price", nullable = false)
     private String price;
+
+    @Column(name = "status", nullable = false)
+    private String status;
 
     @Column(name = "numOfBedRooms")
     private int numOfBedRooms;
@@ -38,13 +43,4 @@ public class Property {
     @Column(name = "numOfLounges")
     private int numOfLounges;
 
-
-    @OneToMany(mappedBy = "property", cascade = CascadeType.ALL)
-    private List<Image> images;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "address_id")
-    private Address address;
-
-    
 }

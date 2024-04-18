@@ -14,17 +14,14 @@ public class Image {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "image_id")
-    private Long imageId;
+    private Long id;
 
-    @Column(name = "image_name")
-    private String imageName;
 
-    @Lob
-    @Column(name = "image_data", length = 10000)
-    private Byte[] imageData;
+    @Column(nullable = false)
+    private String path;
 
-    @ManyToOne
-    @JoinColumn(name = "property_id", nullable = false)
-    private Property property;
+    public Image(String path) {
+        this.path = path;
+    }
+
 }
