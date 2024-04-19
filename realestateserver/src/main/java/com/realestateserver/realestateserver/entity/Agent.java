@@ -12,8 +12,9 @@ import lombok.*;
 public class Agent {
 
     @Id
-    @Column(name = "cellphone_number", nullable = false)
-    private Long cellphoneNum;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -22,10 +23,16 @@ public class Agent {
     private String surname;
 
     @Column(name = "id_number")
-    private Long idNum;
+    private String idNum;
+
+    @Column(name = "cellphone_number", nullable = false)
+    private String cellphoneNum;
 
     @Column(name = "email", nullable = false)
     private String email;
+
+@Column(name = "password", nullable = false)
+    private String password;
 
     
 }

@@ -1,7 +1,4 @@
 package com.realestateserver.realestateserver.dto;
-import java.util.List;
-import com.realestateserver.realestateserver.entity.Address;
-import com.realestateserver.realestateserver.entity.Image;
 import lombok.*;
 
 @Getter

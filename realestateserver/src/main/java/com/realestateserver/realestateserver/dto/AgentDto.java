@@ -7,9 +7,11 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AgentDto {
-    private Long cellphoneNum;
+    private Long id;
     private String name;
     private String surname;
-    private Long idNum;
+    private String idNum;
+    private String cellphoneNum;
     private String email;
+    private String password;
 }

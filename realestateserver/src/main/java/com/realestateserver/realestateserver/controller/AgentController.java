@@ -34,12 +34,21 @@ public class AgentController {
     }
 
     //Get agents REST api
-    @GetMapping("{id}")
+    /*@GetMapping("{id}")
     public ResponseEntity<AgentDto> getAgentById(@PathVariable("id") Long agentId){
         AgentDto agentDto = agentService.getAgentById(agentId);
         return ResponseEntity.ok(agentDto);
-    }
+    }*/
 
+    @GetMapping("{cellphoneNum}")
+public ResponseEntity<AgentDto> getAgentByCellphoneNum(@PathVariable("cellphoneNum") String cellphoneNum){
+    AgentDto agentDto = agentService.getAgentByCellphoneNum(cellphoneNum);
+    if(agentDto != null) {
+        return ResponseEntity.ok(agentDto);
+    } else {
+        return ResponseEntity.notFound().build();
+    }
+}
     //get all agents Rest api
     @GetMapping
     public ResponseEntity<List<AgentDto>> getAllAgents(){

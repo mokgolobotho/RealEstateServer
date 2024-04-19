@@ -1,6 +1,7 @@
 package com.realestateserver.realestateserver.service.implemantation;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -30,6 +31,11 @@ public class AgentServiceImplemantation implements AgentService {
             .orElseThrow(() -> new ResourceNotFoundException("Agent not found with id: " + agentId));
         return AgentMapper.mapToAgentDto(agent);
        }
+
+       public AgentDto getAgentByCellphoneNum(String cellphoneNum) {
+        Agent agentOptional = agentRepo.findByCellphoneNum(cellphoneNum);
+        return AgentMapper.mapToAgentDto(agentOptional);
+    }
     @Override
     public List<AgentDto> getAllAgents() {
         List<Agent> agents = agentRepo.findAll();
@@ -43,8 +49,8 @@ public class AgentServiceImplemantation implements AgentService {
         agent.setCellphoneNum(updateAgent.getCellphoneNum());
         agent.setName(updateAgent.getName());
         agent.setSurname(updateAgent.getSurname());
-        agent.setIdNum(updateAgent.getIdNum());
         agent.setEmail(updateAgent.getEmail());
+        agent.setPassword(updateAgent.getPassword());
 
         Agent updatedAgentObj = agentRepo.save(agent);
         return AgentMapper.mapToAgentDto(updatedAgentObj);

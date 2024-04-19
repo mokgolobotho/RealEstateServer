@@ -1,7 +1,5 @@
 package com.realestateserver.realestateserver.mapper;
 
-import java.util.function.Function;
-
 import com.realestateserver.realestateserver.dto.ImageDto;
 import com.realestateserver.realestateserver.entity.Image;
 

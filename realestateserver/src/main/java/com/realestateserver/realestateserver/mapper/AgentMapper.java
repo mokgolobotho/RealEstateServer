@@ -7,21 +7,25 @@ public class AgentMapper {
 
     public static AgentDto mapToAgentDto(Agent agent){
         return new AgentDto(
-            agent.getCellphoneNum(),
+            agent.getId(),
             agent.getName(), 
             agent.getSurname(),
             agent.getIdNum(),
-            agent.getEmail()
+            agent.getCellphoneNum(),
+            agent.getEmail(),
+            agent.getPassword()
         );
     }
 
     public static Agent mapToAgent(AgentDto agentDto){
         return new Agent(
-            agentDto.getCellphoneNum(), 
+             agentDto.getId(),
             agentDto.getName(), 
             agentDto.getSurname(),
             agentDto.getIdNum(),
-            agentDto.getEmail()
+            agentDto.getCellphoneNum(),
+            agentDto.getEmail(),
+            agentDto.getPassword()
         );
     }
 

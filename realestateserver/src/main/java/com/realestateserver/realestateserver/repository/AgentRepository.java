@@ -6,4 +6,5 @@ import com.realestateserver.realestateserver.entity.Agent;
 
 public interface AgentRepository extends JpaRepository<Agent, Long> {
 
+    Agent findByCellphoneNum(String cellphoneNum);
 }

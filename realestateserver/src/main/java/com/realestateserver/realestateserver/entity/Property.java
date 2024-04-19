@@ -1,7 +1,5 @@
 package com.realestateserver.realestateserver.entity;
 
-import java.util.List;
-
 import jakarta.persistence.*;
 import lombok.*;
 

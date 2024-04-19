@@ -9,6 +9,8 @@ public interface AgentService {
 
     AgentDto getAgentById(Long agentId);
 
+    AgentDto getAgentByCellphoneNum(String cellphoneNum);
+
     List<AgentDto> getAllAgents();
 
     AgentDto updateAgent(Long agentId, AgentDto updateAgent);
