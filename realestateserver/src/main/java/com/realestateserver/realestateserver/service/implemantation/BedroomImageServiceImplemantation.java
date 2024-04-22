@@ -16,23 +16,23 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class BedroomImageServiceImplemantation implements BedroomImageService {
 
-    private BedroomImageRepository bedrooomimageRepository;
+    private BedroomImageRepository bedroomImageRepository;
     @Override
-    public void saveBedroomImagePath(String [] paths) {
-        BedroomImages bedroomImages = new BedroomImages(paths[0], paths[1], paths[2],paths[3], paths[4]);
-        bedrooomimageRepository.save(bedroomImages);
+    public void saveBedroomImagePath(Long id, String [] paths) {
+        BedroomImages bedroomImages = new BedroomImages(id, paths[0], paths[1], paths[2],paths[3], paths[4]);
+        bedroomImageRepository.save(bedroomImages);
     }
 
     @Override
     public BedroomImagesDto getBedroomImageById(Long id) {
-        BedroomImages image = bedrooomimageRepository.findById(id)
+        BedroomImages image = bedroomImageRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Image not found with id: " + id));
         return BedroomImagesMapper.BedroomImagesToBedroomImagesDto(image);
     }
 
     @Override
     public List<BedroomImagesDto> getAllBedroomImages() {
-        List<BedroomImages> images = bedrooomimageRepository.findAll();
+        List<BedroomImages> images = bedroomImageRepository.findAll();
         return images.stream()
                 .map((bedroomImages) -> BedroomImagesMapper.BedroomImagesToBedroomImagesDto(bedroomImages))
                 .collect(Collectors.toList());
@@ -40,10 +40,10 @@ public class BedroomImageServiceImplemantation implements BedroomImageService {
 
     @Override
     public void deleteBedroomImageById(Long id) {
-        if (!bedrooomimageRepository.existsById(id)) {
+        if (!bedroomImageRepository.existsById(id)) {
             throw new ResourceNotFoundException("Image not found with id: " + id);
         }
-        bedrooomimageRepository.deleteById(id);
+        bedroomImageRepository.deleteById(id);
     }
 
 }

@@ -1,4 +1,5 @@
 package com.realestateserver.realestateserver.controller;
+
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +23,8 @@ public class BathroomImageController {
 
     private BathroomImageService bathroomImageService;
 
-@PostMapping
-    public String uploadImages(@RequestParam("files") MultipartFile[] files) {
+@PostMapping("/{id}")
+    public String uploadImages(@PathVariable Long id,@RequestParam("image") MultipartFile[] files) {
         if (files == null || files.length == 0) {
             return "No images selected";
         }
@@ -37,7 +38,7 @@ public class BathroomImageController {
                     String originalFilename = file.getOriginalFilename();
                     String extension = originalFilename.substring(originalFilename.lastIndexOf('.'));
                     String newFilename = UUID.randomUUID().toString() + extension;
-                    String filePath = "../public/images" + newFilename;
+                    String filePath = "C:/Users/Thabang/Desktop/Business/" + newFilename;
                     BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(filePath)));
                     stream.write(bytes);
                     stream.close();
@@ -48,7 +49,7 @@ public class BathroomImageController {
             }
 
             // Save the file paths to the database
-            bathroomImageService.saveBathroomImagePath(filePaths);
+            bathroomImageService.saveBathroomImagePath(id, filePaths);
 
             return "Images uploaded successfully";
         } catch (IOException e) {

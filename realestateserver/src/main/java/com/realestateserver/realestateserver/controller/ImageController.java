@@ -12,6 +12,7 @@ import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 import java.io.File;
 
 @CrossOrigin("*")
@@ -22,19 +23,22 @@ public class ImageController {
     private ImageService imageService;
 
 
-    @PostMapping
-    public String uploadImage(@RequestParam("image") MultipartFile file) {
+    @PostMapping("/{id}")
+    public String uploadImage(@PathVariable Long id,@RequestParam("image") MultipartFile file) {
         if (file.isEmpty()) {
             return "No image selected";
         }
 
         try {
             byte[] bytes = file.getBytes();
-            String filePath = "C:/Users/Thabang/Desktop/Business/" + file.getOriginalFilename(); // Set the file path where you want to save the image
+            String originalFilename = file.getOriginalFilename();
+            String extension = originalFilename.substring(originalFilename.lastIndexOf('.'));
+            String newFilename = UUID.randomUUID().toString() + extension;
+            String filePath = "C:/Users/Thabang/Desktop/Business/" + newFilename; // Set the file path where you want to save the image
             BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(filePath)));
             stream.write(bytes);
             stream.close();
-            imageService.saveImagePath(filePath);
+            imageService.saveImagePath(id, filePath);
             return "Image uploaded successfully";
         } catch (IOException e) {
             e.printStackTrace();

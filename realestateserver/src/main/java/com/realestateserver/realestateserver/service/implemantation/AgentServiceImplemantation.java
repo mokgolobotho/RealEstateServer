@@ -33,8 +33,8 @@ public class AgentServiceImplemantation implements AgentService {
        }
 
        public AgentDto getAgentByCellphoneNum(String cellphoneNum) {
-        Agent agentOptional = agentRepo.findByCellphoneNum(cellphoneNum);
-        return AgentMapper.mapToAgentDto(agentOptional);
+        Agent agent = agentRepo.findByCellphoneNum(cellphoneNum);
+        return AgentMapper.mapToAgentDto(agent);
     }
     @Override
     public List<AgentDto> getAllAgents() {
@@ -49,7 +49,6 @@ public class AgentServiceImplemantation implements AgentService {
         agent.setCellphoneNum(updateAgent.getCellphoneNum());
         agent.setName(updateAgent.getName());
         agent.setSurname(updateAgent.getSurname());
-        agent.setEmail(updateAgent.getEmail());
         agent.setPassword(updateAgent.getPassword());
 
         Agent updatedAgentObj = agentRepo.save(agent);

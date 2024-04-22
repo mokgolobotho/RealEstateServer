@@ -12,7 +12,8 @@ public class AdminMapper {
             admin.getSurname(),
             admin.getIdNum(),
             admin.getCellphoneNum(),
-            admin.getEmail()
+            admin.getEmail(),
+            admin.getPassword()
         );
     }
 
@@ -23,7 +24,8 @@ public class AdminMapper {
             adminDto.getSurname(),
             adminDto.getIdNum(),
             adminDto.getCellphoneNum(),
-            adminDto.getEmail()
+            adminDto.getEmail(),
+            adminDto.getPassword()
         );
     }
 }

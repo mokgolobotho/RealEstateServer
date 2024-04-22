@@ -20,11 +20,14 @@ public class Admin {
     private String surname;
 
     @Column(name = "id_number")
-    private Long idNum;
+    private String idNum;
 
     @Column(name = "cellphone_number", nullable = false)
-    private Long cellphoneNum;
+    private String cellphoneNum;
 
     @Column(name = "email", nullable = false)
     private String email;
+    
+    @Column(name = "password", nullable = false)
+    private String password;
 }

@@ -9,7 +9,8 @@ public class AdminDto {
     private Long adminId;
     private String name;
     private String surname;
-    private Long idNum;
-    private Long cellphoneNum;
+    private String idNum;
+    private String cellphoneNum;
     private String email;
+    private String password;
 }

@@ -10,7 +10,6 @@ import lombok.*;
 @Table(name ="Bedroom_Images")
 public class BedroomImages {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
@@ -29,12 +28,6 @@ public class BedroomImages {
     @Column
     private String bedroom5;
 
-    public BedroomImages(String bedroom1, String bedroom2, String bedroom3, String bedroom4, String bedroom5) {
-        this.bedroom1 = bedroom1;
-        this.bedroom2 = bedroom2;
-        this.bedroom3 = bedroom3;
-        this.bedroom4 = bedroom4;
-        this.bedroom5 = bedroom5;
-    }
+  
 
 }

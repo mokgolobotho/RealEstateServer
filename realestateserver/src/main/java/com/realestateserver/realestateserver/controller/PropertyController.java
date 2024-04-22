@@ -62,4 +62,24 @@ public class PropertyController {
         return ResponseEntity.ok("Property deleted successfully");
     }
 
+   @GetMapping("/generate-id")
+public ResponseEntity<Long> generatePropertyId() {
+    List<PropertyDto> properties = propertyService.getAllProperties();
+    
+    // If there are no properties yet, start the ID from 1
+    if (properties.isEmpty()) {
+        return ResponseEntity.ok(1L);
+    }
+    
+    // Find the maximum property ID
+    long maxId = properties.stream()
+                          .mapToLong(PropertyDto::getPropertyId)
+                          .max()
+                          .orElse(0);
+    
+    // Increment the maximum ID to generate a new unique ID
+    long newId = maxId + 1;
+
+    return ResponseEntity.ok(newId);
+}
 }

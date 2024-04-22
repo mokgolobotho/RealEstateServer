@@ -18,8 +18,8 @@ public class BathroomImageServiceImplemantation implements BathroomImageService 
 
     private BathroomImageRepository bathrooomimageRepository;
     @Override
-    public void saveBathroomImagePath(String [] paths) {
-        BathroomImages bathroomImages = new BathroomImages(paths[0], paths[1], paths[2],paths[3], paths[4]);
+    public void saveBathroomImagePath(Long id, String [] paths) {
+        BathroomImages bathroomImages = new BathroomImages(id, paths[0], paths[1], paths[2],paths[3], paths[4]);
         bathrooomimageRepository.save(bathroomImages);
     }
 

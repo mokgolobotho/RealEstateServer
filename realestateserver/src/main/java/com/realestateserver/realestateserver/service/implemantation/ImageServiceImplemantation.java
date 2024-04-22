@@ -21,8 +21,8 @@ public class ImageServiceImplemantation implements ImageService {
 
     private ImageRepository imageRepository;
 
-    public void saveImagePath(String filePath) {
-        Image imageEntity = new Image(filePath);
+    public void saveImagePath(Long id, String filePath) {
+        Image imageEntity = new Image(id, filePath);
         imageRepository.save(imageEntity);
     }
 

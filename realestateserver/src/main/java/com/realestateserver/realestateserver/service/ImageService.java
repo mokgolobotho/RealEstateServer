@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ImageService {
 
-    void saveImagePath(String filePath);
+    void saveImagePath(Long id, String filePath);
 
     ImageDto getImageById(Long id);
 

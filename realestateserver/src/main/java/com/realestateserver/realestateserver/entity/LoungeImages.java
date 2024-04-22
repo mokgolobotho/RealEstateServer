@@ -7,27 +7,26 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name ="Bathroom_Images")
-public class BathroomImages {
+@Table(name ="Lounge_Images")
+public class LoungeImages {
     @Id
     private Long id;
 
 
     @Column(nullable = false)
-    private String bathroom1;
+    private String lounge1;
 
     @Column
-    private String bathroom2;
+    private String lounge2;
 
     @Column
-    private String bathroom3;
+    private String lounge3;
 
     @Column
-    private String bathroom4;
+    private String lounge4;
 
     @Column
-    private String bathroom5;
+    private String lounge5;
 
     
-
 }

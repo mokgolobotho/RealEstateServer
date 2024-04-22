@@ -4,8 +4,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.realestateserver.realestateserver.dto.BedroomImagesDto;
-import com.realestateserver.realestateserver.service.BedroomImageService;
+import com.realestateserver.realestateserver.dto.LoungeImagesDto;
+import com.realestateserver.realestateserver.service.LoungeImageService;
 
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
@@ -17,10 +17,10 @@ import java.io.File;
 @CrossOrigin("*")
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/bedroomimages")
-public class BedroomImageController {
+@RequestMapping("/api/loungeimages")
+public class LoungeImageController {
 
-    private BedroomImageService bedroomImageService;
+    private LoungeImageService loungeImageService;
 
 @PostMapping("/{id}")
     public String uploadImages(@PathVariable Long id,@RequestParam("image") MultipartFile[] files) {
@@ -48,7 +48,7 @@ public class BedroomImageController {
             }
 
             // Save the file paths to the database
-            bedroomImageService.saveBedroomImagePath(id, filePaths);
+            loungeImageService.saveLoungeImagePath(id, filePaths);
 
             return "Images uploaded successfully";
         } catch (IOException e) {
@@ -59,20 +59,20 @@ public class BedroomImageController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<BedroomImagesDto> getImageById(@PathVariable Long id) {
-        BedroomImagesDto imageDto = bedroomImageService.getBedroomImageById(id);
+    public ResponseEntity<LoungeImagesDto> getImageById(@PathVariable Long id) {
+        LoungeImagesDto imageDto = loungeImageService.getLoungeImageById(id);
         return ResponseEntity.ok(imageDto);
     }
 
     @GetMapping
-    public ResponseEntity<List<BedroomImagesDto>> getAllImages() {
-        List<BedroomImagesDto> imageDtos = bedroomImageService.getAllBedroomImages();
+    public ResponseEntity<List<LoungeImagesDto>> getAllImages() {
+        List<LoungeImagesDto> imageDtos = loungeImageService.getAllLoungeImages();
         return ResponseEntity.ok(imageDtos);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteImageById(@PathVariable Long id) {
-        bedroomImageService.deleteBedroomImageById(id);
+        loungeImageService.deleteLoungeImageById(id);
         return ResponseEntity.noContent().build();
     }
 }

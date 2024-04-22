@@ -6,7 +6,7 @@ import com.realestateserver.realestateserver.dto.BathroomImagesDto;
 
 public interface BathroomImageService {
 
-    void saveBathroomImagePath(String [] paths);
+    void saveBathroomImagePath(Long id, String [] paths);
 
     BathroomImagesDto getBathroomImageById(Long id);
 

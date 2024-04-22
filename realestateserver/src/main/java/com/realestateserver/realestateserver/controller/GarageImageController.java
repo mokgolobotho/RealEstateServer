@@ -4,8 +4,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.realestateserver.realestateserver.dto.BedroomImagesDto;
-import com.realestateserver.realestateserver.service.BedroomImageService;
+import com.realestateserver.realestateserver.dto.GarageImagesDto;
+import com.realestateserver.realestateserver.service.GarageImageService;
 
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
@@ -17,10 +17,10 @@ import java.io.File;
 @CrossOrigin("*")
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/bedroomimages")
-public class BedroomImageController {
+@RequestMapping("/api/garageimages")
+public class GarageImageController {
 
-    private BedroomImageService bedroomImageService;
+    private GarageImageService garageImageService;
 
 @PostMapping("/{id}")
     public String uploadImages(@PathVariable Long id,@RequestParam("image") MultipartFile[] files) {
@@ -48,7 +48,7 @@ public class BedroomImageController {
             }
 
             // Save the file paths to the database
-            bedroomImageService.saveBedroomImagePath(id, filePaths);
+            garageImageService.saveGarageImagePath(id, filePaths);
 
             return "Images uploaded successfully";
         } catch (IOException e) {
@@ -59,20 +59,20 @@ public class BedroomImageController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<BedroomImagesDto> getImageById(@PathVariable Long id) {
-        BedroomImagesDto imageDto = bedroomImageService.getBedroomImageById(id);
+    public ResponseEntity<GarageImagesDto> getImageById(@PathVariable Long id) {
+        GarageImagesDto imageDto = garageImageService.getGarageImageById(id);
         return ResponseEntity.ok(imageDto);
     }
 
     @GetMapping
-    public ResponseEntity<List<BedroomImagesDto>> getAllImages() {
-        List<BedroomImagesDto> imageDtos = bedroomImageService.getAllBedroomImages();
+    public ResponseEntity<List<GarageImagesDto>> getAllImages() {
+        List<GarageImagesDto> imageDtos = garageImageService.getAllGarageImages();
         return ResponseEntity.ok(imageDtos);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteImageById(@PathVariable Long id) {
-        bedroomImageService.deleteBedroomImageById(id);
+        garageImageService.deleteGarageImageById(id);
         return ResponseEntity.noContent().build();
     }
 }
