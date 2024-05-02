@@ -47,6 +47,7 @@ public class PropertyController {
         List<PropertyDto> properties = propertyService.getAllProperties();
         return ResponseEntity.ok(properties);
     }
+   
 
     //Update property Rest api
     @PutMapping("{id}")

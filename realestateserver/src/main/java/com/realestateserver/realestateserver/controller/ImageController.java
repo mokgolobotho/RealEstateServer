@@ -34,11 +34,11 @@ public class ImageController {
             String originalFilename = file.getOriginalFilename();
             String extension = originalFilename.substring(originalFilename.lastIndexOf('.'));
             String newFilename = UUID.randomUUID().toString() + extension;
-            String filePath = "C:/Users/Thabang/Desktop/Business/" + newFilename; // Set the file path where you want to save the image
+            String filePath = "C:/Users/Thabang/Desktop/Business/Real-Estate/Real-estate/public/images/images/" + newFilename; // Set the file path where you want to save the image
             BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(filePath)));
             stream.write(bytes);
             stream.close();
-            imageService.saveImagePath(id, filePath);
+            imageService.saveImagePath(id, newFilename);
             return "Image uploaded successfully";
         } catch (IOException e) {
             e.printStackTrace();
@@ -47,9 +47,10 @@ public class ImageController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ImageDto> getImageById(@PathVariable Long id) {
+    public ResponseEntity<String> getImageById(@PathVariable Long id) {
         ImageDto imageDto = imageService.getImageById(id);
-        return ResponseEntity.ok(imageDto);
+        String name = imageDto.getPath();
+        return ResponseEntity.ok(name);
     }
 
     @GetMapping

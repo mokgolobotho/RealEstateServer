@@ -37,11 +37,11 @@ public class BedroomImageController {
                     String originalFilename = file.getOriginalFilename();
                     String extension = originalFilename.substring(originalFilename.lastIndexOf('.'));
                     String newFilename = UUID.randomUUID().toString() + extension;
-                    String filePath = "C:/Users/Thabang/Desktop/Business/" + newFilename;
+                    String filePath = "C:/Users/Thabang/Desktop/Business/Real-Estate/Real-estate/public/images/Bedroom/" + newFilename;
                     BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(filePath)));
                     stream.write(bytes);
                     stream.close();
-                    filePaths[i] = filePath;
+                    filePaths[i] = newFilename;
                 } else {
                     filePaths[i] = null;
                 }

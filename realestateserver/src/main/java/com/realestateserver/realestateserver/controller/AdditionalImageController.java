@@ -41,7 +41,7 @@ public class AdditionalImageController {
                     BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(filePath)));
                     stream.write(bytes);
                     stream.close();
-                    filePaths[i] = filePath;
+                    filePaths[i] = newFilename;
                 } else {
                     filePaths[i] = null;
                 }
